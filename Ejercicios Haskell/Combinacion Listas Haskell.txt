@@ -1,0 +1,15 @@
+--función donde entra un elemento de la primera lista y la otra lista
+tupla :: a -> [b] -> [[(a,b)]]
+tupla m []    = []
+tupla x (a:b) = [[(x, a)]]++(tupla x b)
+
+--función donde entran las dos listas 
+combinacion :: [a] -> [b] -> [[(a,b)]]
+--condicion inicial: la primera lista vacia y la segunda llena
+combinacion [] p   = []
+--
+combinacion (a:b) ys= (tupla a ys)++(combinacion b ys)
+
+main = print $ combinacion['a'..'d'] [1..8]
+
+
